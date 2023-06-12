@@ -38,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 75,
                     ),
                     Image.asset(
-                      "assets/images/scholar.png",
+                      kLogoImage,
                       height: 100,
                     ),
                     Text(

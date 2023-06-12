@@ -1,5 +1,6 @@
 import 'package:chat_app/components/custom_textfiled.dart';
 import 'package:chat_app/constants/constants.dart';
+import 'package:chat_app/screens/chat_screen.dart';
 import 'package:chat_app/screens/register_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 75,
                     ),
                     Image.asset(
-                      "assets/images/scholar.png",
+                      kLogoImage,
                       height: 100,
                     ),
                     Text(
@@ -89,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         isLoading = true;
                         setState(() {});
                         await loginUser();
+                        Navigator.pushNamed(context, ChatScreen.id);
                         if (formKey.currentState!.validate()) {
                           try {} on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
@@ -98,7 +100,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           } catch (e) {
                             print("error :$e");
-                            showSnackBar(context, "Success");
                           }
                           isLoading = false;
                           setState(() {});
