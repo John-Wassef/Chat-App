@@ -5,6 +5,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../components/custom_button.dart';
 import '../components/custom_textfiled.dart';
+import '../helper/show_snack_bar.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
@@ -139,11 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("$message"),
-    ));
-  }
+
 
   Future<void> resigerUser() async {
     UserCredential credential =

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../components/custom_button.dart';
+import '../helper/show_snack_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -83,17 +84,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 20,
                     ),
                     CustomButton(
-                      text: "Register",
+                      text: "Login",
                       onTab: () async {
                         isLoading = true;
                         setState(() {});
                         await loginUser();
                         if (formKey.currentState!.validate()) {
                           try {} on FirebaseAuthException catch (e) {
-                            if (e.code == 'weak-password') {
-                              showSnackBar(context, "Weak Passwrod");
-                            } else if (e.code == 'email-already-in-use') {
-                              showSnackBar(context, "Email Already Existed");
+                            if (e.code == 'user-not-found') {
+                              showSnackBar(context,"No user found for that email.");
+                            } else if (e.code == 'wrong-password') {
+                              showSnackBar(context,"Wrong password provided for that user.");
                             }
                           } catch (e) {
                             print("error :$e");
@@ -134,10 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("$message"),
-    ));
+
   }
 
   Future<void> loginUser() async {
@@ -147,4 +145,3 @@ class _LoginScreenState extends State<LoginScreen> {
       password: password.toString().trim()
     );
   }
-}
