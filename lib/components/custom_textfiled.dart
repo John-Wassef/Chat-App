@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
-  CustomTextFormFiled({this.hintText,this.change});
+  CustomTextFormFiled({this.hintText,this.change,this.isPassword=false});
   String? hintText;
   Function(String)? change;
+  bool? isPassword;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -12,6 +13,7 @@ class CustomTextFormFiled extends StatelessWidget {
           return"the value can't be null";
         }
       },
+      obscureText: isPassword! ,
       onChanged: change,
       decoration: InputDecoration(
         hintText: hintText,

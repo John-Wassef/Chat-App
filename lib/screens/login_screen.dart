@@ -80,6 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       change: (data) {
                         password = data;
                       },
+                      isPassword: true,
                     ),
                     SizedBox(
                       height: 20,
@@ -90,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         isLoading = true;
                         setState(() {});
                         await loginUser();
-                        Navigator.pushNamed(context, ChatScreen.id);
+                        Navigator.pushNamed(context, ChatScreen.id,arguments: email);
                         if (formKey.currentState!.validate()) {
                           try {} on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
