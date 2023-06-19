@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({required this.text,this.onTab});
+  CustomButton({super.key, required this.text,this.onTab});
   VoidCallback? onTab;
   String text;
   @override
@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 24
             ),
           ),

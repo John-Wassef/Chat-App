@@ -12,6 +12,8 @@ class ChatScreen extends StatelessWidget {
   TextEditingController textEditingController =TextEditingController();
   ScrollController scrollController= ScrollController();
 
+  ChatScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
   String  email= ModalRoute.of(context)!.settings.arguments as String ;
@@ -34,7 +36,7 @@ class ChatScreen extends StatelessWidget {
                      kLogoImage,
                      height: 50,
                    ),
-                   Text("Chat",
+                   const Text("Chat",
                      style: TextStyle(
                          color: Colors.white
                      ),
@@ -61,7 +63,7 @@ class ChatScreen extends StatelessWidget {
                      controller: textEditingController,
                      decoration: InputDecoration(
                        hintText: 'Send Message',
-                       suffixIcon: Icon(
+                       suffixIcon: const Icon(
                          Icons.send,
                          color: kPrimaryColor,
                        ),
@@ -70,7 +72,7 @@ class ChatScreen extends StatelessWidget {
                        ),
                        enabledBorder: OutlineInputBorder(
                          borderRadius: BorderRadius.circular(16),
-                         borderSide: BorderSide(
+                         borderSide: const BorderSide(
                            color: kPrimaryColor,
                          ),
                        ),
@@ -84,7 +86,7 @@ class ChatScreen extends StatelessWidget {
                        textEditingController.clear();
                        scrollController.animateTo(
                          0,
-                         duration: Duration(seconds: 1),
+                         duration: const Duration(seconds: 1),
                          curve: Curves.fastOutSlowIn,
                        );
                      },
@@ -94,7 +96,9 @@ class ChatScreen extends StatelessWidget {
                ],
              )
          );
-       }else return Text("loading");
+       }else {
+         return Text("loading");
+       }
       }
     );
   }

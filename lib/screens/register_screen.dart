@@ -8,7 +8,7 @@ import '../components/custom_textfiled.dart';
 import '../helper/show_snack_bar.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({Key? key}) : super(key: key);
   static String id = 'RegisterScreen';
 
   @override
@@ -27,21 +27,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Scaffold(
         backgroundColor: kPrimaryColor,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
             key: formKey,
             child: ListView(
               children: [
                 Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 75,
                     ),
                     Image.asset(
                       kLogoImage,
                       height: 100,
                     ),
-                    Text(
+                    const Text(
                       "Scholar Chat",
                       style: TextStyle(
                         color: Colors.white,
@@ -50,18 +50,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         fontFamily: "pacifico",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "REGISTER",
                           style: TextStyle(fontSize: 24, color: Colors.grey),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     CustomTextFormFiled(
@@ -70,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         email = data;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     CustomTextFormFiled(
@@ -79,7 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         password = data;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     CustomButton(
@@ -91,11 +91,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         });
                         if(formKey.currentState!.validate()){
                           try {
-                            await resigerUser();
+                            await registerUser();
 
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'weak-password') {
-                              showSnackBar(context, "Weak Passwrod");
+                              showSnackBar(context, "Weak Password");
                             } else if (e.code == 'email-already-in-use') {
                               showSnackBar(context, "Email Already Existed");
                             }
@@ -113,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "already have an account ?",
                           style: TextStyle(color: Colors.grey),
                         ),
@@ -121,7 +121,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: Text(
+                          child: const Text(
                             "Login",
                             style: TextStyle(
                               color: Color(0xffC4E9E7),
@@ -142,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
 
 
-  Future<void> resigerUser() async {
+  Future<void> registerUser() async {
     UserCredential credential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email!.toString().trim(),

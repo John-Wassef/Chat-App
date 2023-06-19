@@ -10,7 +10,7 @@ import '../components/custom_button.dart';
 import '../helper/show_snack_bar.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
   static String id = 'LoginScreen';
 
   @override
@@ -29,21 +29,21 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         backgroundColor: kPrimaryColor,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
             key: formKey,
             child: ListView(
               children: [
                 Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 75,
                     ),
                     Image.asset(
                       kLogoImage,
                       height: 100,
                     ),
-                    Text(
+                    const Text(
                       "Scholar Chat",
                       style: TextStyle(
                         color: Colors.white,
@@ -52,18 +52,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontFamily: "pacifico",
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "LOGIN",
                           style: TextStyle(fontSize: 24, color: Colors.grey),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     CustomTextFormFiled(
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         email = data;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     CustomTextFormFiled(
@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       isPassword: true,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     CustomButton(
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "don't have an account ?",
                           style: TextStyle(color: Colors.grey),
                         ),
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             Navigator.pushNamed(context, RegisterScreen.id);
                           },
-                          child: Text(
+                          child: const Text(
                             "Register",
                             style: TextStyle(
                               color: Color(0xffC4E9E7),

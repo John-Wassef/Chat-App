@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
-  CustomTextFormFiled({this.hintText,this.change,this.isPassword=false});
+  CustomTextFormFiled({super.key, this.hintText,this.change,this.isPassword=false});
   String? hintText;
   Function(String)? change;
   bool? isPassword;
@@ -17,14 +17,14 @@ class CustomTextFormFiled extends StatelessWidget {
       onChanged: change,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: Colors.white,
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
           color: Colors.white,
         )),
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
             borderSide: BorderSide(
           color: Colors.white,
         )),
